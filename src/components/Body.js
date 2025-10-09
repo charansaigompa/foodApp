@@ -10,67 +10,29 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  // const fetchData = async () => {
-  //   const data = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.7149073&lng=83.3223223&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   );
-     
-  //   const json = await data.json();
-  //   console.log(json);
-  //   setListOfRes(
-  //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //   );
-  //   setFilteredRes(
-  //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //   );
-  // };
   const fetchData = async () => {
-  try {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.7149073&lng=83.3223223&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
-      { cache: "no-store" } // optional: forces fresh request
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.7149073&lng=83.3223223&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
+     
+    const json = await data.json();
+    console.log(json);
+    setListOfRes(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRes(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
-    // If data not modified, use cached data
-    if (response.status === 304) {
-      console.log("Data not modified — using cached data");
-      const cachedData = localStorage.getItem("restaurantsCache");
-      if (cachedData) {
-        const parsed = JSON.parse(cachedData);
-        setListOfRes(parsed);
-        setFilteredRes(parsed);
-      }
-      return;
-    }
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
 
-    const json = await response.json();
 
-    const restaurants =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || [];
 
-    // Update state
-    setListOfRes(restaurants);
-    setFilteredRes(restaurants);
 
-    // Cache the data for next time
-    localStorage.setItem("restaurantsCache", JSON.stringify(restaurants));
-  } catch (error) {
-    console.error("Error fetching data:", error);
 
-    // fallback to cached data if available
-    const cachedData = localStorage.getItem("restaurantsCache");
-    if (cachedData) {
-      const parsed = JSON.parse(cachedData);
-      setListOfRes(parsed);
-      setFilteredRes(parsed);
-    }
-  }
-};
+
+
 
   console.log("body rendered");
   //  if(listOfRes.length==0){

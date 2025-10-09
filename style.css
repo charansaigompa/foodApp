@@ -13,6 +13,10 @@
     position: fixed;
     width: 100vw;
 } */
+ body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,11 +25,11 @@
   background-color: coral;
   height: 102px;
   color: #fff;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* keeps header above everything */
+  z-index: 1000; keeps header above everything */
 }
 
 
@@ -118,7 +122,7 @@
   align-items: center; /* vertically aligns within container */
   /* space between input and buttons */
   width: 100%;
-  margin-top: 110px;
+  margin-top: 50px;
 }
 .searchbox{
     width:250px;
@@ -151,10 +155,78 @@ a
     text-decoration: none;
     color: inherit;
 }
-.fixed{
-     margin-top: 110px;
-}
-/* .menu-container{
-    display: flex;
 
-} */
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+}
+.menu-data{
+    margin-top: 50px;
+    width:50%;
+}
+.menu-ftbox{
+    background-color: coral;
+    height:15vh;
+    
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color:#fff;
+    padding:20px;
+}
+.menu-item-card{
+    height: 30vh;
+    border-bottom: 2px solid #d9cfcf;
+    display: flex;
+    justify-content: space-between;
+
+}
+.menu-items{
+  
+    margin: 20px 10px;
+}
+.menu-item-card>li{
+    list-style: none;
+    font-size: 20px;
+   
+}
+.itemImg{
+    border-radius: 20px;
+   width: 150px; /* adjust size */
+  height: 140px;
+  object-fit: cover;
+
+}
+.itemImgCont{
+ display: flex;
+  flex-direction: column; /* vertical stack */
+  align-items: center;    /* center horizontally */
+  margin-top: 10px;
+  margin-right: 5px;
+  gap: 8px; 
+}
+.menu-item-card>.listData>li{
+    list-style: none;
+    font-size: 20px ;
+    font-weight: bold;
+}
+.menu-item-card>.listData>p{
+    font-size: 18px;
+}
+.listData{
+    margin-top: 20px;
+    padding:10px;
+}
+.listData>h3{
+    color:green;
+}
+.filter-btn.add {
+  padding: 6px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.resName{
+    margin-bottom: 20px;
+}
